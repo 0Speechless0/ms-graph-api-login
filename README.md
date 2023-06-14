@@ -116,7 +116,7 @@ string redirectUri = $"ms-appx-web://microsoft.aad.brokerplugin/{sid}";
 
 1. In the app's registration screen, select **Authentication** in the menu.
    - If you don't have a platform added, select **Add a platform** and select the **Public client (mobile & desktop)** option.
-   - In the **Redirect URIs** | add the redirect URI of your app (see above).
+   - In the **Redirect URIs** | add the redirect URI of your app (see above) or add "https://login.live.com/oauth20_desktop.srf" as new redirect URI 
 
 1. Select **Save** to save your changes.
 1. In the app's registration screen, click on the **API permissions** blade in the left to open the page where we add access to the APIs that your application needs.
@@ -134,9 +134,10 @@ Open the project in your IDE (like Visual Studio) to configure the code.
 1. Open the `Native_UWP_V2\MainPage.xaml.cs` file
 1. Find the below [line](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/blob/5f798a47a35fff4f862d142561891845765ae836/Native_UWP_V2/MainPage.xaml.cs#L35)
    ```csharp
-   private const string ClientId = "4a1aa1d5-c567-49d0-ad0b-cd957a47f842"
+   private const string ClientId = "4a1aa1d5-c567-49d0-ad0b-cd957a47f842";
+   private const string TenantId = "2b3575a3-eb8d-49a1-8c90-f22961a3986e";
    ``` 
-   and replace the existing value with the application ID (clientId) of the  `UWP-App-calling-MSGraph` application copied from the Azure portal.
+   and replace the existing value with the application ID (clientId) and tenant ID of the  `UWP-App-calling-MSGraph` application copied from the Azure portal.
 1. Another option is to modify [this line](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/blob/5f798a47a35fff4f862d142561891845765ae836/Native_UWP_V2/MainPage.xaml.cs#L37) which is currently set to **"Common"** that means that an user from any Tenant can log-in into the application. To restrict the log-in to current tenant, you should change the value to tenant Id or tenant name as explained inside comment for the line.  
 
 ### Step 4: Run the sample
